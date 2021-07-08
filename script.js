@@ -1,6 +1,7 @@
 const palette = document.getElementById('color-palette');
 const board = document.getElementById('pixel-board');
 const colors = palette.children;
+const btnClear = document.getElementById('clear-board');
 let paint = 'black';
 
 window.onload = function() {
@@ -58,3 +59,13 @@ function selectColor(event) {
 }
 palette.addEventListener('click', selectColor);
 
+function paintPixel(event) {
+  event.target.style.backgroundColor = paint;
+}
+board.addEventListener('click', paintPixel);
+
+btnClear.addEventListener('click', function () {
+  for (let pixel of board.children) {
+    pixel.style.backgroundColor = 'white';
+  }
+});
