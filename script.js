@@ -24,7 +24,7 @@ function firstColor() {
 
 function addColors() {
   firstColor();
-  let colors = ['red', 'green', 'blue', 'yellow', 'pink', 'gray'];
+  let colors = ['red', 'green', 'blue'];
   for (let index = 0; index < colors.length; index += 1) {
     let newColor = createColor();
     newColor.style.backgroundColor = colors[index];
