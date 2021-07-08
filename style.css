@@ -1,0 +1,15 @@
+.color {
+  border: 1px solid rgb(0, 0, 0);
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  margin-left: 1%;
+}
+
+.pixel {
+  border: 1px solid rgb(0, 0, 0);
+  width: 40px;
+  height: 40px;
+}
+
+
