@@ -28,8 +28,15 @@ function addColors() {
   }
 }
 
+/**
+ * Source: https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
+ * Consultei o stack overflow para achar uma solução para embaralhar o array que criei com as cores para a paleta 
+ */
 function shuffle(array) {
-  let currentIndex = array.length, randomIndex;
+  // indice atual recebe o tamanho do array
+  let currentIndex = array.length;
+  // inicializa variável para guardar um indice aleatório
+  let randomIndex;
 
   //enquanto restar elementos a serem embaralhados...
   while (0 !== currentIndex) {
@@ -37,7 +44,7 @@ function shuffle(array) {
     randomIndex = Math.floor(Math.random() * currentIndex);
     currentIndex -= 1;
 
-    // Troca esse elemento com o elemento atual
+    // Troca o elemento escolhido com o elemento atual
     [array[currentIndex], array[randomIndex]] = [array[randomIndex], array[currentIndex]];
   }
 
