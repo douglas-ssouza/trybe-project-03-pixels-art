@@ -2,7 +2,7 @@ const palette = document.getElementById('color-palette');
 const board = document.getElementById('pixel-board');
 const btnClear = document.getElementById('clear-board');
 const btnGenerate = document.getElementById('generate-board');
-const colors = ['red', 'green', 'blue', 'yellow', 'orange', 'pink', 'purple', 'gray', 'brown', 'beige'];
+const colors = ['red', 'green', 'blue', 'yellow', 'orange', 'pink', 'purple', 'gray', 'brown'];
 let paint = 'black';
 
 function createColor() {
@@ -18,19 +18,9 @@ function setFirstColor() {
   palette.appendChild(firstColor);
 }
 
-function addColors() {
-  setFirstColor();
-  const newPalette = shuffle(colors);
-  for (let index = 0; index < 3; index += 1) {
-    const newColor = createColor();
-    newColor.style.backgroundColor = newPalette[index];
-    palette.appendChild(newColor);
-  }
-}
-
 /**
  * Source: https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
- * Consultei o stack overflow para achar uma solução para embaralhar o array que criei com as cores para a paleta 
+ * Consultei o stack overflow para achar uma solução para embaralhar o array que criei com as cores para a paleta
  */
 function shuffle(array) {
   // indice atual recebe o tamanho do array
@@ -38,8 +28,8 @@ function shuffle(array) {
   // inicializa variável para guardar um indice aleatório
   let randomIndex;
 
-  //enquanto restar elementos a serem embaralhados...
-  while (0 !== currentIndex) {
+  // enquanto restar elementos a serem embaralhados...
+  while (currentIndex !== 0) {
     // Escolhe um elemento sobrando
     randomIndex = Math.floor(Math.random() * currentIndex);
     currentIndex -= 1;
@@ -49,6 +39,16 @@ function shuffle(array) {
   }
 
   return array;
+}
+
+function addColors() {
+  setFirstColor();
+  const newPalette = shuffle(colors);
+  for (let index = 0; index < 3; index += 1) {
+    const newColor = createColor();
+    newColor.style.backgroundColor = newPalette[index];
+    palette.appendChild(newColor);
+  }
 }
 
 function createPixel() {
