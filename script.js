@@ -2,38 +2,50 @@ const palette = document.getElementById('color-palette');
 const board = document.getElementById('pixel-board');
 const btnClear = document.getElementById('clear-board');
 const btnGenerate = document.getElementById('generate-board');
+const colors = ['red', 'green', 'blue', 'yellow', 'orange', 'pink', 'purple', 'gray', 'brown', 'beige'];
 let paint = 'black';
 
-window.onload = function() {
-  addColors();
-  addPixels(5);
-}
-
 function createColor() {
-  let newColor = document.createElement('div');
+  const newColor = document.createElement('div');
   newColor.className = 'color';
   return newColor;
 }
 
-function firstColor() {
-  let firstColor = createColor();
+function setFirstColor() {
+  const firstColor = createColor();
   firstColor.className += ' selected';
   firstColor.style.backgroundColor = 'black';
   palette.appendChild(firstColor);
 }
 
 function addColors() {
-  firstColor();
-  let colors = ['red', 'green', 'blue'];
-  for (let index = 0; index < colors.length; index += 1) {
-    let newColor = createColor();
-    newColor.style.backgroundColor = colors[index];
+  setFirstColor();
+  const newPalette = shuffle(colors);
+  for (let index = 0; index < 3; index += 1) {
+    const newColor = createColor();
+    newColor.style.backgroundColor = newPalette[index];
     palette.appendChild(newColor);
   }
 }
 
+function shuffle(array) {
+  let currentIndex = array.length, randomIndex;
+
+  //enquanto restar elementos a serem embaralhados...
+  while (0 !== currentIndex) {
+    // Escolhe um elemento sobrando
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex -= 1;
+
+    // Troca esse elemento com o elemento atual
+    [array[currentIndex], array[randomIndex]] = [array[randomIndex], array[currentIndex]];
+  }
+
+  return array;
+}
+
 function createPixel() {
-  let newPixel = document.createElement('div');
+  const newPixel = document.createElement('div');
   newPixel.className = 'pixel';
   newPixel.style.backgroundColor = 'white';
   return newPixel;
@@ -41,14 +53,15 @@ function createPixel() {
 
 function addPixels(tamanho) {
   for (let index = 0; index < tamanho * tamanho; index += 1) {
-    let newPixel = createPixel();
+    const newPixel = createPixel();
     board.appendChild(newPixel);
   }
-  board.style.width = (42 * tamanho) + 'px';
+  const largura = tamanho * 42;
+  board.style.width = largura + 'px';
 }
 
 function changeClassSelected() {
-  for (let color of palette.children) {
+  for (const color of palette.children) {
     color.className = 'color';
   }
 }
@@ -65,23 +78,24 @@ function paintPixel(event) {
 }
 board.addEventListener('click', paintPixel);
 
-btnClear.addEventListener('click', function() {
-  for (let pixel of board.children) {
+function clearBoard() {
+  for (const pixel of board.children) {
     pixel.style.backgroundColor = 'white';
   }
-});
+}
+btnClear.addEventListener('click', clearBoard);
 
-function clearBoard() {
+function removeBoard() {
   for (let index = board.children.length - 1; index >= 0; index -= 1) {
     board.removeChild(board.children[index]);
   }
 }
 
-btnGenerate.addEventListener('click', function() {
-  let tamanho = document.getElementById('board-size').value;
-  
+function generateBoard() {
+  const tamanho = document.getElementById('board-size').value;
+
   if (tamanho >= 1) {
-    clearBoard();
+    removeBoard();
     if (tamanho <= 5) {
       addPixels(5);
     } else if (tamanho >= 50) {
@@ -92,5 +106,10 @@ btnGenerate.addEventListener('click', function() {
   } else {
     alert('Board inválido!');
   }
+}
+btnGenerate.addEventListener('click', generateBoard);
 
-});
+window.onload = function initialRenderization() {
+  addColors();
+  addPixels(5);
+};
