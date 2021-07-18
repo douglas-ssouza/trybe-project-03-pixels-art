@@ -8,17 +8,25 @@
 </head>
 <body>
 
-  <h1 id="title">Paleta de Cores</h1>
+  <header class="header-container">
+    <h1>Pixels Art</h1>
+    <p>Crie seus proṕrios desenhos em pixel</p>
+  </header>
 
-  <section id="color-palette"></section>
+  <main class="main-container">
+    <h2 id="title">Paleta de Cores</h1>
+    <section id="color-palette"></section>
+    <section id="controls">
+      <input type="number" id="board-size" min="1" placeholder="5x5">
+      <button id="generate-board" class="btn">Alterar</button>
+      <button id="clear-board" class="btn">Limpar</button>
+    </section>
+    <section id="pixel-board"></section>
+  </main>
 
-  <section id="controls">
-    <button id="clear-board">Limpar</button>
-    <input type="number" id="board-size" min="1">
-    <button id="generate-board">VQV</button>
-  </section>
-
-  <section id="pixel-board"></section>
+  <footer>
+    <p>Criado por <a href="https://douglas-ssouza.github.io/" target="_blank">Douglas Souza</a></p>
+  </footer>
 
   <script src="script.js"></script>
   
