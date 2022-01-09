@@ -1,8 +1,10 @@
 const COLORS = document.querySelectorAll('.color');
 const PIXEL_BOARD = document.querySelector('#pixel-board');
-const CLEAR_BUTTON = document.querySelector('#btn-clear')
+const CLEAR_BUTTON = document.querySelector('#btn-clear');
+const BTN_VQV = document.querySelector('#btn-vqv');
 
 CLEAR_BUTTON.addEventListener('click', clearBoard);
+BTN_VQV.addEventListener('click', generateCustomBoard)
 
 function generateRandomColor() {
   const red = Math.floor(Math.random() * 256);
@@ -42,6 +44,12 @@ function clearBoard() {
   pixels.forEach((pixel) => {
     pixel.style.backgroundColor = 'white';
   })
+}
+
+function generateCustomBoard() {
+  const size = Number(document.querySelector('#input-size').value);
+  PIXEL_BOARD.innerHTML = '';
+  generateBoard(size);
 }
 
 window.onload = () => {
