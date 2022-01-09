@@ -21,8 +21,16 @@ function generateBoard(size) {
   }
 }
 
+function selectColor(event) {
+  COLORS.forEach(color => {
+    color.classList.remove('selected');
+  });
+  event.target.classList.add('selected');
+}
+
 window.onload = () => {
   COLORS.forEach((color, index) => {
+    color.addEventListener('click', selectColor);
     color.style.backgroundColor = index === 0
       ? 'rgb(0, 0, 0)'
       : generateRandomColor();
