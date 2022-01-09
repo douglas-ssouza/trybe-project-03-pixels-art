@@ -20,6 +20,42 @@ header {
 
 main {
   width: max-content;
+  margin: auto;
+  text-align: center;
+  color: #AC5FDB;
+}
+
+main h2 {
+  font-size: 1.5em;
+  margin-bottom: 2%;
+}
+
+.btn-container {
+  margin-bottom: 5%;
+}
+
+#input-size {
+  padding: 2%;
+  border: none;
+  border-radius: 5px;
+  font-size: 1em;
+  width: 50px;
+  text-align: right;
+}
+
+.btn {
+  border: none;
+  padding: 2% 5%;
+  border-radius: 5px;
+  background-color: #E3A2EE;
+  font-weight: 600;
+  color: #29262B;
+  font-size: 1em;
+}
+
+.btn:hover {
+  background-color: #AC5FDB;
+  cursor: pointer;
 }
 
 #color-palette {
