@@ -6,6 +6,9 @@ const BTN_VQV = document.querySelector('#btn-vqv');
 
 CLEAR_BUTTON.addEventListener('click', clearBoard);
 BTN_VQV.addEventListener('click', generateCustomBoard);
+INPUT_SIZE.addEventListener('keypress', (event) => {
+  if (event.keyCode === 13) BTN_VQV.click();
+})
 
 
 function generateRandomColor() {
