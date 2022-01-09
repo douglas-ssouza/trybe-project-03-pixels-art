@@ -49,6 +49,14 @@ function clearBoard() {
 function generateCustomBoard() {
   const size = Number(document.querySelector('#input-size').value);
   PIXEL_BOARD.innerHTML = '';
+
+  if (size < 5) {
+    return generateBoard(5)
+  }
+  if (size > 50) {
+    return generateBoard(50)
+  }
+
   generateBoard(size);
 }
 
