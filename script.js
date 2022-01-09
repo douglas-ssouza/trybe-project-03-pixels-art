@@ -9,11 +9,17 @@ function generateRandomColor() {
   return `rgb(${red}, ${green}, ${blue})`;
 }
 
+function paintPixel(event) {
+  const selectedColor = document.querySelector('.selected').style.backgroundColor;
+  event.target.style.backgroundColor = selectedColor;
+}
+
 function generateBoard(size) {
   for(let line = 0; line < size; line += 1) {
     for (let column = 0; column < size; column += 1) {
       const pixel = document.createElement('div');
       pixel.classList.add('pixel');
+      pixel.addEventListener('click', paintPixel);
       PIXEL_BOARD.appendChild(pixel);
     }
     const br = document.createElement('br');
