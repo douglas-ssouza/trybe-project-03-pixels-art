@@ -1,5 +1,8 @@
 const COLORS = document.querySelectorAll('.color');
 const PIXEL_BOARD = document.querySelector('#pixel-board');
+const CLEAR_BUTTON = document.querySelector('#btn-clear')
+
+CLEAR_BUTTON.addEventListener('click', clearBoard);
 
 function generateRandomColor() {
   const red = Math.floor(Math.random() * 256);
@@ -32,6 +35,13 @@ function selectColor(event) {
     color.classList.remove('selected');
   });
   event.target.classList.add('selected');
+}
+
+function clearBoard() {
+  const pixels = document.querySelectorAll('.pixel');
+  pixels.forEach((pixel) => {
+    pixel.style.backgroundColor = 'white';
+  })
 }
 
 window.onload = () => {
